@@ -83,6 +83,8 @@ func dataSourceServiceAccountRead(ctx context.Context, d *schema.ResourceData, m
 		d.Set(names.AttrARN, arn)
 
 		return diags
+	} else {
+		d.Set(names.AttrARN, "logdelivery.elasticloadbalancing.amazonaws.com")
 	}
 
 	return sdkdiag.AppendErrorf(diags, "unsupported AWS Region: %s", region)
